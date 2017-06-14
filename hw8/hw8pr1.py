@@ -77,7 +77,6 @@ def k_means(X, k, eps=1e-10, max_iter=1000, print_freq=10):
 
 	while iter_num < max_iter:
 
-		# TODO: Implement k-means algorithm
 		"*** YOUR CODE HERE ***"
 		distances = np.sqrt(((X - clusters[:, np.newaxis])**2).sum(axis=2))
 		label = np.argmin(distances, axis=0)
@@ -125,7 +124,6 @@ def k_means_cost(X, clusters, label):
 	m, n = X.shape
 	k = clusters.shape[0]
 
-	# TODO: Calculate the total cost
 	"*** YOUR CODE HERE ***"
 	mu = clusters[label.flatten()]
 	cost = (np.linalg.norm(X - mu, axis = 1)**2) . sum()
@@ -152,7 +150,6 @@ if __name__ == '__main__':
 
 
 	# =============STEP 1a: Implementing K-MEANS=================
-	# TODO: Fill in the code in k_means() and k_means_cost()
 	# NOTE: You may test your implementations by running k_means(X, k)
 	# 		for any reasonable value of k
 
@@ -162,7 +159,6 @@ if __name__ == '__main__':
 	print('==> Step 1: Finding optimal number of clusters...')
 	cost_k_list = []
 	for k in range(1, 21):
-		# TODO: Get the clusters, labels, and cost list for different k values
 		"*** YOUR CODE HERE ***"
 		clusters, labels, cost_list = k_means(X, k)
 		"*** END YOUR CODE HERE ***"
@@ -173,7 +169,6 @@ if __name__ == '__main__':
 	opt_k = np.argmin(cost_k_list) + 1
 	print('-- Optimal number of clusters is {}'.format(opt_k))
 
-	# TODO: Generate plot of cost vs k
 	"*** YOUR CODE HERE ***"
 	k_list = range(1,21)
 	plt.plot(cost_k_list, k_list,'g^')
@@ -184,7 +179,6 @@ if __name__ == '__main__':
 	plt.close()
 
 	# =============STEP 1c: VISUALIZATION=================
-	# TODO: Generate visualization on running k-means on the optimal k value
 	# NOTE: Be sure to mark the cluster centers from the data point
 	"*** YOUR CODE HERE ***"
 	clusters = k_means(X, opt_k)[0]
